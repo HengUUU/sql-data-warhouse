@@ -19,8 +19,8 @@ create table silver.crm_cust_info(
 	cst_key nvarchar(30),
 	cst_firstname nvarchar(30),
 	cst_lastname nvarchar(20),
-	cst_marital_status nvarchar(2),
-	cst_gndr nvarchar(2),
+	cst_marital_status nvarchar(15),
+	cst_gndr nvarchar(15),
 	cst_create_date DATE,
 	dwh_create_date Datetime2 default getdate()
 
@@ -36,7 +36,7 @@ create table silver.crm_prd_info(
 	prd_key varchar(50),
 	prd_nm varchar(50),
 	prd_cost int,
-	prd_line nvarchar(2),
+	prd_line nvarchar(15),
 	prd_start_dt Date,
 	prd_end_dt Date,
 	dwh_create_date Datetime2 default getdate()
