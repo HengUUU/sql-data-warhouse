@@ -55,8 +55,8 @@ prd_start_dt,
 prd_end_dt
 )
 select prd_id,
-replace(substring(prd_key,1,5), '-', '_') as cat_id,
-substring(prd_key, 7, len(prd_key)) as prd_key,
+replace(substring(prd_key,1,5), '-', '_') as cat_id,  --- derive cat_id from prd_key
+substring(prd_key, 7, len(prd_key)) as prd_key,  --- derive prd_key from prd_key(0riginal)
 prd_nm,
 isnull(prd_cost, 0) as prd_cost,
 case 
@@ -67,6 +67,6 @@ case
 	else 'n/a'
 end prd_line,
 prd_start_dt,
-dateadd(day,-1,lead(prd_start_dt) over (partition by prd_key order by prd_start_dt) ) as prd_end_dt
+dateadd(day,-1,lead(prd_start_dt) over (partition by prd_key order by prd_start_dt) ) as prd_end_dt  -- use the st_dt of the bext record as the end_dt for the same prd_id ( but also substrac with 1) 
 from bronze.crm_prd_info;
 go
