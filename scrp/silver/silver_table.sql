@@ -32,16 +32,16 @@ if object_id ('silver.crm_prd_info', 'U') is not null
 	drop table silver.crm_prd_info;
 create table silver.crm_prd_info(
 	prd_id int,
+	cat_id varchar(30),
 	prd_key varchar(50),
 	prd_nm varchar(50),
 	prd_cost int,
 	prd_line nvarchar(20),
-	cat_id nvarchar(20),
 	prd_start_dt Date,
 	prd_end_dt Date,
 	dwh_create_date Datetime2 default getdate()
 );
-go
+go 
 
 if OBJECT_ID('silver.crm_sale_details','U') is not null
 	drop table silver.crm_sale_details;
