@@ -99,5 +99,24 @@ end as sls_price
 from bronze.crm_sale_details;
 go
 
+--- insert data into silver.erp_cust_az12
+truncate table silver.erp_cust_az12;
+insert into silver.erp_cust_az12(cid,bdate,gen) 
+select 
+case when left(cid,3) = 'NAS' then substring(cid,4,Len(cid))
+	else cid
+end as cid,
+case when bdate > GETDATE() then NULL 
+	else bdate
+end as bdate,
+case gen
+	when 'F' then 'Female'
+	when 'M' then 'Male'
+	else 'n\a'
+	
+end as gen
+from bronze.erp_cust_az12 ;
+go
+
 
 
