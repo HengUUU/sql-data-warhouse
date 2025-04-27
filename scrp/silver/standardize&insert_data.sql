@@ -133,6 +133,14 @@ end as cntry
 from bronze.erp_loc_A101;
 
 
+--- insert data into silver.erp_px_cat_g1v2  
+--- duer the data is already clean so i'll insert it directly
+truncate table silver.erp_px_cat_g1v2 ;
+insert into silver.erp_px_cat_g1v2 
+(id, cat, subcat, maintenance)
+select * from bronze.erp_px_cat_g1v2;
+
+
 
 
 
