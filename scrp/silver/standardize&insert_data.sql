@@ -122,7 +122,7 @@ begin
 	--- insert data silver.erp_loc_A101
 	truncate table silver.erp_loc_A101;
 	insert into silver.erp_loc_A101(cid, cntry)
-	select concat(left(cid,2),right(cid,4)) as cid,
+	select REPLACE(cid,'-','') as cid,
 	case 
 		when TRIM(cntry) = 'DE' then 'Germany'
 		when TRIM(cntry) = 'USA' then 'United States'
