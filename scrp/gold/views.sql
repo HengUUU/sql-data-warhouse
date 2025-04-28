@@ -1,6 +1,6 @@
 
 --- create view and insert data in gold layer for customer
-create view gold.customer as	
+create view gold.dim_customer as	
 select 
 row_number() over (order by ci.cst_id) as row_numb,
 ci.cst_id as customer_id,
