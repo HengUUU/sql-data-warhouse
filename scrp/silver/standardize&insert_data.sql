@@ -113,10 +113,13 @@ begin
 	case gen
 		when 'F' then 'Female'
 		when 'M' then 'Male'
-		else 'n\a'
+		when Null then 'n\a'
+		when '' then 'n\a'
+		else gen
 	
 	end as gen
 	from bronze.erp_cust_az12 ;
+
 
 
 	--- insert data silver.erp_loc_A101
