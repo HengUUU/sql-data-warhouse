@@ -4,7 +4,7 @@ create view gold.customer as
 select 
 row_number() over (order by ci.cst_id) as row_numb,
 ci.cst_id as customer_id,
-ci.cst_key customer_key,
+ci.cst_key as customer_number,
 ci.cst_firstname as first_name,
 ci.cst_lastname as last_name, 
 case when ci.cst_gndr != 'n\a' then ci.cst_gndr
